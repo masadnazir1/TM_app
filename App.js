@@ -1,20 +1,49 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+// App.js
 
-export default function App() {
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
+import ZongScreen from './screens/ZongScreen';
+import JazzScreen from './screens/JazzScreen';
+import KibanaScreen from './screens/KibanaScreen';
+import CustomTabBar from './components/CustomTabBar';
+
+const Tab = createMaterialTopTabNavigator();
+r
+const App = () => {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator
+        tabBar={(props) => <CustomTabBar {...props} />}
+        tabBarOptions={{
+          showIcon: true,
+          showLabel: false,
+        }}
+      >
+        <Tab.Screen
+          name="Zong"
+          component={ZongScreen}
+          options={{
+            tabBarIcon: require('./assets/icons/zong.png'),
+          }}
+        />
+        <Tab.Screen
+          name="Jazz"
+          component={JazzScreen}
+          options={{
+            tabBarIcon: require('./assets/icons/zong.png'),
+          }}
+        />
+        <Tab.Screen
+          name="Kibana"
+          component={KibanaScreen}
+          options={{
+            tabBarIcon: require('./assets/icons/zong.png'),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-}
+};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
